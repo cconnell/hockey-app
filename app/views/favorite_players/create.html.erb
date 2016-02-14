@@ -1,0 +1,10 @@
+<%= form_tag "/favorite_players", method: :post do %>
+
+  <div>
+    <%= label_tag :player %>
+    <%= text_field_tag :player %>
+  </div>
+
+<%= submit_tag "Add to favorite players" %>
+
+<% end %>

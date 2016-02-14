@@ -1,0 +1,2 @@
+class FavoriteSearchesController < ApplicationController
+end

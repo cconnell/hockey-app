@@ -1,0 +1,10 @@
+<%= @user.email %>
+
+<%= form_tag "/users", method: :post do %>
+
+  <%= label_tag :favorite_player %>
+  <%= text_field_tag :favorite_player %>
+
+  <%= submit_tag "Add favorite player" %>
+
+<% end %>
