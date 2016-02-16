@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214221950) do
+ActiveRecord::Schema.define(version: 20160216165701) do
 
   create_table "favorite_players", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160214221950) do
     t.integer  "user_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "search",     limit: 255
   end
 
   create_table "favorite_teams", force: :cascade do |t|

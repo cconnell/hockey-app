@@ -29,4 +29,12 @@ delete '/favorite_teams' => 'favorite_teams#destroy'
 get '/favorite_teams/id' => 'favorite_teams#show'
 get '/favorite_teams/:id/edit' => 'favorite_teams#edit'
 
+get '/favorite_searches' => 'favorite_searches#index'
+get '/favorite_searches/new' => 'favorite_searches#new'
+post '/favorite_searches' => 'favorite_searches#create'
+delete '/favorite_searches' => 'favorite_searches#destroy'
+
+get '/favorite_searches/id' => 'favorite_searches#show'
+get '/favorite_searches/:id/edit' => 'favorite_searches#edit'
+
 end
