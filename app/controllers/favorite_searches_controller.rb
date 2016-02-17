@@ -8,7 +8,13 @@ class FavoriteSearchesController < ApplicationController
     @favsearch.save
     redirect_to "/"
     flash[:alert] = "Search saved to your favorites."
+  end
 
+
+def destroy
+    favorite_search = FavoriteSearch.find(params[:id])
+    favorite_search.destroy
+    redirect_to '/'
   end
 
 end
