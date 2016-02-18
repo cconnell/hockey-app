@@ -12,7 +12,7 @@ def new
   end
 
   def destroy
-    favorite_team = Favoriteteam.find(params[:id])
+    favorite_team = FavoriteTeam.find(params[:id])
     favorite_team.destroy
     redirect_to '/'
   end
