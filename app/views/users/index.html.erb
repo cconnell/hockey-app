@@ -1,24 +1,35 @@
 <h1>Willkommen, bienvenue, welcome!</h1>
 
-<h2>logged in as: <%= @user.email %></h2>
+<% if current_user %>
+    <p>signed in: <%= current_user.email %></p>
+          <% else %>
+              <p><a href="/users/sign_up">Sign Up/In</a></p>
+          <% end %>
+
+<p><%= link_to "Sign Out", "/users/sign_out", method: :delete if user_signed_in? %></p>
+
 
 <h5>Favorite Players: </h5>
-<% @user.favorite_players.each do |user_player| %>
+<!-- if user signed in and has favs saved, then -->
+<% if current_user %>
+  <% @user.favorite_players.each do |user_player| %>
   <%= user_player.player %>  <%= link_to "Delete", "/favorite_players/#{user_player.id}", method: :delete %>
-
+  <% end %>
 <% end %>
 
 
 <h5>Favorite Teams: </h5>
-<% @user.favorite_teams.each do |user_team| %>
-  <%= user_team.team %> <%= link_to "Delete", "/favorite_teams/#{user_team.id}", method: :delete %>
-
+<% if current_user %>
+  <% @user.favorite_teams.each do |user_team| %>
+    <%= user_team.team %> <%= link_to "Delete", "/favorite_teams/#{user_team.id}", method: :delete %>
+  <% end %>
 <% end %>
 
 <h5>Favorite Searches: </h5>
-<% @user.favorite_searches.each do |user_search| %>
-  <%= user_search.search %> <%= link_to "Delete", "/favorite_searches/#{user_search.id}", method: :delete  %>
-
+  <% if current_user %>
+  <% @user.favorite_searches.each do |user_search| %>
+    <%= user_search.search %> <%= link_to "Delete", "/favorite_searches/#{user_search.id}", method: :delete  %>
+  <% end %>
 <% end %>
 
 <%= form_tag "/favorite_players", method: :post do %>
@@ -45,10 +56,13 @@
 
 <h1>Goal Leaders</h1>
 <h5>Current as of: <%= @updated %></h5>
-<hr>
+
 <% @goals.each do |data| %>
-  <%= data["data"] %>
-<hr>
+  <table style="width:100%", border="1">
+  <tr>
+    <td><%= data["data"] %></td>
+  </tr>
+  </table>
 <% end %>
 
 

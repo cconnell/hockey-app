@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @user = User.first
+    @user = current_user
     @goal_league_leaders = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/goals/leagueleaders.json").body
 
     @goals = @goal_league_leaders["skaterData"]
