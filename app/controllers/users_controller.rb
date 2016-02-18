@@ -2,6 +2,11 @@ class UsersController < ApplicationController
 
   def index
     @user = User.first
+    @goal_league_leaders = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/goals/leagueleaders.json").body
+
+    @goals = @goal_league_leaders["skaterData"]
+    @updated = @goal_league_leaders["timestamp"]
+
   end
 
   def show
@@ -19,7 +24,5 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-    
-
-
+   
 end

@@ -42,3 +42,15 @@
   <%= submit_tag "Add to favorite searches" %>
 
 <% end %>
+
+<h1>Goal Leaders</h1>
+<h3>Current as of: <%= @updated %></h3>
+<hr>
+<% @goals.each do |data| %>
+  <%= data["data"] %>
+<hr>
+<% end %>
+
+
+
+
