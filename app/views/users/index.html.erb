@@ -54,17 +54,23 @@
 
 <% end %>
 
-<h1>Goal Leaders</h1>
-<h5>Current as of: <%= @updated %></h5>
+<h1><%= @requested_stats_table_title %></h1>
+<h5>Current as of: <%= @requested_stats_updated %></h5>
 
-<% @goals.each do |data| %>
-  <table style="width:100%", border="1">
+<% @requested_stats_players.each do |data| %>
+  <table style="width:80%", border="1">
   <tr>
-    <td><%= data["data"] %></td>
+    <% @requested_stats_table_categories.split(',').each do |category| %>
+      <th><%= category %></th>
+    <% end %>
+  </tr>
+  <tr>   
+    <% data["data"].split(',').each do |item| %>
+      <td><%= item %></td>
+      <% end %>
   </tr>
   </table>
 <% end %>
-
 
 
 

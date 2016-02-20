@@ -2,10 +2,12 @@ class UsersController < ApplicationController
 
   def index
     @user = current_user
-    @goal_league_leaders = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/goals/leagueleaders.json").body
+    @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/goals/leagueleaders.json").body
 
-    @goals = @goal_league_leaders["skaterData"]
-    @updated = @goal_league_leaders["timestamp"]
+    @requested_stats_players = @requested_stats["skaterData"]
+    @requested_stats_updated = @requested_stats["timestamp"]
+    @requested_stats_table_title = @requested_stats["title"].titleize
+    @requested_stats_table_categories = @requested_stats["categories"]
 
   end
 
