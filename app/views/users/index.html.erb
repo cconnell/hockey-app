@@ -1,5 +1,3 @@
-<h1>Willkommen, bienvenue, welcome!</h1>
-
 <% if current_user %>
     <p>signed in: <%= current_user.email %></p>
           <% else %>
@@ -8,25 +6,25 @@
 
 <p><%= link_to "Sign Out", "/users/sign_out", method: :delete if user_signed_in? %></p>
 
-
-<h5>Favorite Players: </h5>
-<!-- if user signed in and has favs saved, then -->
 <% if current_user %>
+<h5>Favorite Players: </h5>
   <% @user.favorite_players.each do |user_player| %>
   <%= user_player.player %>  <%= link_to "Delete", "/favorite_players/#{user_player.id}", method: :delete %>
   <% end %>
 <% end %>
 
 
-<h5>Favorite Teams: </h5>
+
 <% if current_user %>
+<h5>Favorite Teams: </h5>
   <% @user.favorite_teams.each do |user_team| %>
     <%= user_team.team %> <%= link_to "Delete", "/favorite_teams/#{user_team.id}", method: :delete %>
   <% end %>
 <% end %>
 
-<h5>Favorite Searches: </h5>
+
   <% if current_user %>
+  <h5>Favorite Searches: </h5>
   <% @user.favorite_searches.each do |user_search| %>
     <%= user_search.search %> <%= link_to "Delete", "/favorite_searches/#{user_search.id}", method: :delete  %>
   <% end %>
@@ -57,20 +55,29 @@
 <h1><%= @requested_stats_table_title %></h1>
 <h5>Current as of: <%= @requested_stats_updated %></h5>
 
-<% @requested_stats_players.each do |data| %>
-  <table style="width:80%", border="1">
+<table style="width:60%">
   <tr>
-    <% @requested_stats_table_categories.split(',').each do |category| %>
-      <th><%= category %></th>
+    <th>Name</th></a>
+    <th>Team</th>   
+    <th>POS</th>
+    <th>GP</th>
+    <th>G</th>   
+    <th>A</th>
+    <th>PTS</th>
+  </tr>
+  <tr>
+    <% @players_array.each do |x| %>
+    <tr>
+      <td> <%= x[:player_name] %></td>
+      <td> <%= x[:player_team] %></td>
+      <td> <%= x[:player_position] %></td>
+      <td> <%= x[:player_games] %></td>
+      <td> <%= x[:player_goals] %></td>
+      <td> <%= x[:player_assists] %></td>
+      <td> <%= x[:player_points] %></td>
     <% end %>
-  </tr>
-  <tr>   
-    <% data["data"].split(',').each do |item| %>
-      <td><%= item %></td>
-      <% end %>
-  </tr>
-  </table>
-<% end %>
+    </tr>
+</tr>
 
-
-
+</table>
+  

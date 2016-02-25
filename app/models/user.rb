@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  
   has_many :favorite_players
   has_many :favorite_teams
   has_many :favorite_searches
@@ -7,5 +8,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+def stats_updated
+  requested_stats["timestamp"]
+end
+
+  
 
 end
+
+
