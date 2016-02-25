@@ -2,14 +2,20 @@ class UsersController < ApplicationController
 
   def index
     @user = current_user
+ 
+    @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body
 
-    @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/points/leagueleaders.json").body
-
-    # if @goals
-    # @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/goals/leagueleaders.json").body
-    
-    # else @points 
-    # @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/points/leagueleaders.json").body
+    # if params[:goal_leaders]
+    #   @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/goals/leagueleaders.json").body
+    #   render :index
+    # elsif params[:point_leaders]
+    #   @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/points/leagueleaders.json").body
+    #   render :index
+    # elsif params[:assist_leaders]
+    #   @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body
+    #   render :index
+      
+    end
 
     @requested_stats_players = @requested_stats["skaterData"]
     @requested_stats_updated = @requested_stats["timestamp"]
@@ -36,13 +42,33 @@ class UsersController < ApplicationController
       render :index
     end
 
+    if params[:position]
+      @players_array = @players_array.sort! { |x,y| x[:player_position] <=> y[:player_position] } 
+      render :index
+    end
+  
     if params[:name]
       @players_array = @players_array.sort! { |x,y| x[:player_name] <=> y[:player_name] } 
       render :index
     end
-  
+
+    if params[:games]
+      @players_array = @players_array.sort! { |x,y| x[:player_games] <=> y[:player_games] } 
+      render :index
+    end
+
     if params[:goals]
       @players_array = @players_array.sort! { |x,y| x[:player_goals] <=> y[:player_goals] } 
+      render :index
+    end
+
+    if params[:assists]
+      @players_array = @players_array.sort! { |x,y| x[:player_assists] <=> y[:player_assists] } 
+      render :index
+    end
+
+    if params[:points]
+      @players_array = @players_array.sort! { |x,y| x[:player_points] <=> y[:player_points] } 
       render :index
     end
 

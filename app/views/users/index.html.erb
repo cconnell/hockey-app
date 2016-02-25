@@ -1,3 +1,5 @@
+<p><%= link_to "Home", "/" %></p>
+
 <% if current_user %>
     <p>signed in: <%= current_user.email %></p>
           <% else %>
@@ -49,23 +51,24 @@
   <%= submit_tag "Add to favorite searches" %>
 <% end %>
 
+<h4><a href="/?goal_leaders=goal_leaders">Goal Leaders</a>  <a href="/?assist_leaders=assist_leaders">Assist Leaders</a>  <a href="/?point_leaders=point_leaders">Points Leaders</a></h4>
 <h1><%= @requested_stats_table_title %></h1>
 <h5>Current as of: <%= @requested_stats_updated %></h5>
 
 <table style="width:60%">
   <tr>
-    <th><a href="/?name=name">Name</a></th>
-    <th><a href="/?team">Team</a></th>   
-    <th><a href="/?position">Position</a></th>
-    <th><a href="/?gamesplayed">Games Played</a></th>
-    <th><a href="/?goals">Goals</a></th>   
-    <th><a href="/?assists">Assists</a></th>
-    <th><a href="/?points">Points</a></th>
+    <th><a href="/?name=sort">Name</a></th>
+    <th><a href="/?team=sort">Team</a></th>   
+    <th><a href="/?position=sort">Position</a></th>
+    <th><a href="/?gamesplayed=sort">Games Played</a></th>
+    <th><a href="/?goals=sort">Goals</a></th>   
+    <th><a href="/?assists=sort">Assists</a></th>
+    <th><a href="/?points=sort">Points</a></th>
   </tr>
   <tr>
     <% @players_array.each do |player| %>
     <tr>
-      <td> <%= player[:player_name] %></td>
+      <td><a href="/player"><%= player[:player_name] %></a></td>
       <td> <%= player[:player_team] %></td>
       <td> <%= player[:player_position] %></td>
       <td> <%= player[:player_games] %></td>
@@ -76,4 +79,5 @@
     </tr>
 </tr>
 </table>
+
   
