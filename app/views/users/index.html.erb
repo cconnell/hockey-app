@@ -34,14 +34,12 @@
   <%= label_tag :player %>
   <%= text_field_tag :player %>
   <%= submit_tag "Add to favorite players" %>
-
 <% end %>
 
 <%= form_tag "/favorite_teams", method: :post do %>
   <%= label_tag :team %>
   <%= text_field_tag :team %>
   <%= submit_tag "Add to favorite teams" %>
-
 <% end %>
 
 
@@ -49,7 +47,6 @@
   <%= label_tag :search %> 
   <%= text_field_tag :search %>
   <%= submit_tag "Add to favorite searches" %>
-
 <% end %>
 
 <h1><%= @requested_stats_table_title %></h1>
@@ -57,27 +54,26 @@
 
 <table style="width:60%">
   <tr>
-    <th>Name</th></a>
-    <th>Team</th>   
-    <th>POS</th>
-    <th>GP</th>
-    <th>G</th>   
-    <th>A</th>
-    <th>PTS</th>
+    <th><a href="/?name=name">Name</a></th>
+    <th><a href="/?team">Team</a></th>   
+    <th><a href="/?position">Position</a></th>
+    <th><a href="/?gamesplayed">Games Played</a></th>
+    <th><a href="/?goals">Goals</a></th>   
+    <th><a href="/?assists">Assists</a></th>
+    <th><a href="/?points">Points</a></th>
   </tr>
   <tr>
-    <% @players_array.each do |x| %>
+    <% @players_array.each do |player| %>
     <tr>
-      <td> <%= x[:player_name] %></td>
-      <td> <%= x[:player_team] %></td>
-      <td> <%= x[:player_position] %></td>
-      <td> <%= x[:player_games] %></td>
-      <td> <%= x[:player_goals] %></td>
-      <td> <%= x[:player_assists] %></td>
-      <td> <%= x[:player_points] %></td>
+      <td> <%= player[:player_name] %></td>
+      <td> <%= player[:player_team] %></td>
+      <td> <%= player[:player_position] %></td>
+      <td> <%= player[:player_games] %></td>
+      <td> <%= player[:player_goals] %></td>
+      <td> <%= player[:player_assists] %></td>
+      <td> <%= player[:player_points] %></td>
     <% end %>
     </tr>
 </tr>
-
 </table>
   
