@@ -5,15 +5,16 @@ class UsersController < ApplicationController
  
     # @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body
 
-    if params[:goal_leaders]
+    if params[:goal_leaders] || params[:stat_type] == 'goal'
       @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/goals/leagueleaders.json").body
+      @stat_type = 'goal'
       
     elsif params[:point_leaders]
       @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/points/leagueleaders.json").body
       
     elsif params[:assist_leaders]
       @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body
-    elsif 
+    else 
       @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body 
     end
 
@@ -99,5 +100,9 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+
+  private
+
+  
    
 end
