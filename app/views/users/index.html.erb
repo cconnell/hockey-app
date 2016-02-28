@@ -57,14 +57,14 @@
 
 <table style="width:60%">
   <tr>
-<!--   <th><a href="/?sort_by_name=name&{:id}">Name</a></th>
- -->    <th><a href=<%= "/?sort_by_name=name&stat_type=#{@stat_type}" %>>Name</a></th>
-    <th><a href="/?sort_by_team=team">Team</a></th>   
-    <th><a href="/?sort_by_position=position">Position</a></th>
-    <th><a href="/?sort_by_gamesplayed=gamesplayed">Games Played</a></th>
-    <th><a href="/?sort_by_goals=goals">Goals</a></th>   
-    <th><a href="/?sort_by_assists=assists">Assists</a></th>
-    <th><a href="/?sort_by_points=points">Points</a></th>
+
+    <th><a href=<%= "/?sort_by_name=name&stat_type=#{@stat_type}" %>>Name</a></th>
+    <th><a href=<%= "/?sort_by_team=team&stat_type=#{@stat_type}"%>>Team</a></th>   
+    <th><a href=<%="/?sort_by_position=position&stat_type=#{@stat_type}"%>>Position</a></th>
+    <th><a href=<%="/?sort_by_gamesplayed=gamesplayed&stat_type=#{@stat_type}"%>>Games Played</a></th>
+    <th><a href=<%="/?sort_by_goals=goals&stat_type=#{@stat_type}"%>>Goals</a></th>   
+    <th><a href=<%="/?sort_by_assists=assists&stat_type=#{@stat_type}"%>>Assists</a></th>
+    <th><a href=<%="/?sort_by_points=points&stat_type=#{@stat_type}"%>>Points</a></th>
   </tr>
   <tr>
     <% @players_array.each do |player| %>

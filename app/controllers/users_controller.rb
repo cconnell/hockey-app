@@ -5,17 +5,19 @@ class UsersController < ApplicationController
  
     # @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body
 
-    if params[:goal_leaders] || params[:stat_type] == 'goal'
+    if params[:goal_leaders] || params[:stat_type] == 'goals'
       @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/goals/leagueleaders.json").body
-      @stat_type = 'goal'
+      @stat_type = 'goals'
       
-    elsif params[:point_leaders]
+    elsif params[:point_leaders] || params[:stat_type] == 'points'
       @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/points/leagueleaders.json").body
+      @stat_type = 'points'
       
-    elsif params[:assist_leaders]
+    elsif params[:assist_leaders] || params[:stat_type] == 'assits'
       @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body
+      @stat_type = 'assists'
     else 
-      @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body 
+      @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/points/leagueleaders.json").body 
     end
 
     @requested_stats_players = @requested_stats["skaterData"]
@@ -103,6 +105,6 @@ class UsersController < ApplicationController
 
   private
 
-  
+
    
 end
