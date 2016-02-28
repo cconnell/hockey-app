@@ -3,18 +3,18 @@ class UsersController < ApplicationController
   def index
     @user = current_user
  
-    @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body
+    # @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body
 
-    # if params[:goal_leaders]
-    #   @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/goals/leagueleaders.json").body
-    #   render :index
-    # elsif params[:point_leaders]
-    #   @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/points/leagueleaders.json").body
-    #   render :index
-    # elsif params[:assist_leaders]
-    #   @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body
-    #   render :index
+    if params[:goal_leaders]
+      @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/goals/leagueleaders.json").body
       
+    elsif params[:point_leaders]
+      @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/points/leagueleaders.json").body
+      
+    elsif params[:assist_leaders]
+      @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body
+    elsif 
+      @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body 
     end
 
     @requested_stats_players = @requested_stats["skaterData"]
@@ -37,38 +37,48 @@ class UsersController < ApplicationController
         @players_array << temp_hash
       end
   
-    if params[:team]
+
+  # Must pass in leaders parameter with sort so there is something to sort!
+
+  # Is it possible to make params universal so can have ONE if statement?
+
+   # if params[:SEARCHTERM]
+   #    @players_array = @players_array.sort! { |x,y| x[:SEARCHTERM] <=> y[:SEARCHTERM] } 
+   #    render :index
+   #  end
+
+    if params[:sort_by_team]
       @players_array = @players_array.sort! { |x,y| x[:player_team] <=> y[:player_team] } 
       render :index
     end
 
-    if params[:position]
+    if params[:sort_by_position]
       @players_array = @players_array.sort! { |x,y| x[:player_position] <=> y[:player_position] } 
       render :index
     end
   
-    if params[:name]
+    if params[:sort_by_name]
       @players_array = @players_array.sort! { |x,y| x[:player_name] <=> y[:player_name] } 
       render :index
     end
 
-    if params[:games]
-      @players_array = @players_array.sort! { |x,y| x[:player_games] <=> y[:player_games] } 
+    if params[:sort_by_gamesplayed]
+      @players_array = @players_array.sort! { |x,y| y[:player_games] <=> x[:player_games] } 
       render :index
     end
 
-    if params[:goals]
-      @players_array = @players_array.sort! { |x,y| x[:player_goals] <=> y[:player_goals] } 
+    if params[:sort_by_goals]
+      @players_array = @players_array.sort! { |x,y| y[:player_goals] <=> x[:player_goals] } 
       render :index
     end
 
-    if params[:assists]
-      @players_array = @players_array.sort! { |x,y| x[:player_assists] <=> y[:player_assists] } 
+    if params[:sort_by_assists]
+      @players_array = @players_array.sort! { |x,y| y[:player_assists] <=> x[:player_assists] } 
       render :index
     end
 
-    if params[:points]
-      @players_array = @players_array.sort! { |x,y| x[:player_points] <=> y[:player_points] } 
+    if params[:sort_by_points]
+      @players_array = @players_array.sort! { |x,y| y[:player_points] <=> x[:player_points] } 
       render :index
     end
 

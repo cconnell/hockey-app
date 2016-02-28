@@ -57,13 +57,14 @@
 
 <table style="width:60%">
   <tr>
-    <th><a href="/?name=sort">Name</a></th>
-    <th><a href="/?team=sort">Team</a></th>   
-    <th><a href="/?position=sort">Position</a></th>
-    <th><a href="/?gamesplayed=sort">Games Played</a></th>
-    <th><a href="/?goals=sort">Goals</a></th>   
-    <th><a href="/?assists=sort">Assists</a></th>
-    <th><a href="/?points=sort">Points</a></th>
+<!--   <th><a href="/?sort_by_name=name&{:id}">Name</a></th>
+ -->    <th><a href="/?sort_by_name=name">Name</a></th>
+    <th><a href="/?sort_by_team=team">Team</a></th>   
+    <th><a href="/?sort_by_position=position">Position</a></th>
+    <th><a href="/?sort_by_gamesplayed=gamesplayed">Games Played</a></th>
+    <th><a href="/?sort_by_goals=goals">Goals</a></th>   
+    <th><a href="/?sort_by_assists=assists">Assists</a></th>
+    <th><a href="/?sort_by_points=points">Points</a></th>
   </tr>
   <tr>
     <% @players_array.each do |player| %>
