@@ -32,11 +32,11 @@
   <% end %>
 <% end %>
 
-<%= form_tag "/favorite_players", method: :post do %>
-  <%= label_tag :player %>
-  <%= text_field_tag :player %>
-  <%= submit_tag "Add to favorite players" %>
-<% end %>
+<!-- %= form_tag "/favorite_players", method: :post do %
+  %= label_tag :player %
+  %= text_field_tag :player %
+  %= submit_tag "Add to favorite players" %
+% end % -->
 
 <%= form_tag "/favorite_teams", method: :post do %>
   <%= label_tag :team %>
@@ -52,12 +52,12 @@
 <% end %>
 
 <h4><a href="/?goal_leaders=goal_leaders">Goal Leaders</a>  <a href="/?assist_leaders=assist_leaders">Assist Leaders</a>  <a href="/?point_leaders=point_leaders">Points Leaders</a></h4>
-<h1><%= @requested_stats_table_title %></h1>
+<h1><%= @requested_stats_table_title %> Leaders</h1>
 <h5>Current as of: <%= @requested_stats_updated %></h5>
 
 <table style="width:60%">
   <tr>
-
+    <th></th>
     <th><a href=<%= "/?sort_by_name=name&stat_type=#{@stat_type}" %>>Name</a></th>
     <th><a href=<%= "/?sort_by_team=team&stat_type=#{@stat_type}"%>>Team</a></th>   
     <th><a href=<%="/?sort_by_position=position&stat_type=#{@stat_type}"%>>Position</a></th>
@@ -65,17 +65,24 @@
     <th><a href=<%="/?sort_by_goals=goals&stat_type=#{@stat_type}"%>>Goals</a></th>   
     <th><a href=<%="/?sort_by_assists=assists&stat_type=#{@stat_type}"%>>Assists</a></th>
     <th><a href=<%="/?sort_by_points=points&stat_type=#{@stat_type}"%>>Points</a></th>
+    <th><a href=<%="/?sort_by_points_per_game=points_per_game&stat_type=#{@stat_type}"%>>PTS PG</a></th>
+<!-- ppg not working, add to stats model?
+ -->
   </tr>
   <tr>
     <% @players_array.each do |player| %>
     <tr>
-      <td><a href="/player"><%= player[:player_name] %></a></td>
-      <td> <%= player[:player_team] %></td>
+
+
+      <td><%= form_tag "/favorite_player/#{player[:id]}", method: :post do %><%= submit_tag "Follow Me!" %><% end %></td>
+      <td><a href=<%= "/player/#{player[:id]}" %>><%= player[:player_name] %></a></td>
+      <td><a href=<%= "/#{player[:player_team]}" %>><%= player[:player_team] %></a></td>
       <td> <%= player[:player_position] %></td>
       <td> <%= player[:player_games] %></td>
       <td> <%= player[:player_goals] %></td>
       <td> <%= player[:player_assists] %></td>
       <td> <%= player[:player_points] %></td>
+      <td> <%= (player[:player_points].to_f / player[:player_games].to_f).round(3) %></td>
     <% end %>
     </tr>
 </tr>

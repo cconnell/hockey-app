@@ -16,7 +16,8 @@ delete '/users/:id' => 'users#destroy'
 
 get '/favorite_players' => 'favorite_players#index'
 
-post '/favorite_players' => 'favorite_players#create'
+
+post '/favorite_player/:id' => 'favorite_players#create'
 get '/favorite_players/:id' => 'favorite_players#show'
 delete '/favorite_players/:id' => 'favorite_players#destroy'
 

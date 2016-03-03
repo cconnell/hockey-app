@@ -5,7 +5,7 @@ class FavoritePlayersController < ApplicationController
   end
 
   def create
-    @favorite_player = FavoritePlayer.new(user_id: current_user.id, player: params[:player])
+    @favorite_player = FavoritePlayer.new(user_id: current_user.id, player: params[:id])
     @favorite_player.save
     redirect_to "/"
     flash[:alert] = "Player saved to your favorites."

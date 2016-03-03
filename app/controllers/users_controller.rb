@@ -16,9 +16,13 @@ class UsersController < ApplicationController
     elsif params[:assist_leaders] || params[:stat_type] == 'assits'
       @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body
       @stat_type = 'assists'
+      
+    elsif params[:team]
+
     else 
       @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/points/leagueleaders.json").body 
     end
+
 
     @requested_stats_players = @requested_stats["skaterData"]
     @requested_stats_updated = @requested_stats["timestamp"]
@@ -28,7 +32,7 @@ class UsersController < ApplicationController
     
       @requested_stats_players.each do |info|
         temp_hash = {}
-
+        temp_hash[:id] = info['id']
         temp_hash[:player_team] = info['data'].split(', ')[1]
         temp_hash[:player_position] = info['data'].split(', ')[2]
         temp_hash[:player_name] = info['data'].split(', ')[3]
