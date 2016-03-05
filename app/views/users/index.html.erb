@@ -74,7 +74,7 @@
     <tr>
 
 
-      <td><%= form_tag "/favorite_player/#{player[:id]}", method: :post do %><%= submit_tag "Follow Me!" %><% end %></td>
+      <td><%= form_tag "/favorite_player/#{player[:id]}", method: :post do %><%= submit_tag "Follow"%><% end %></td>
       <td><a href=<%= "/player/#{player[:id]}" %>><%= player[:player_name] %></a></td>
       <td><a href=<%= "/#{player[:player_team]}" %>><%= player[:player_team] %></a></td>
       <td> <%= player[:player_position] %></td>
