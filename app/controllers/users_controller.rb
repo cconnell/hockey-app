@@ -43,17 +43,21 @@ class UsersController < ApplicationController
 
         @players_array << temp_hash
       end
-  
+          p "***********"
     @players_array.each do |player|
       if FavoritePlayer.where(player: player[:id]).length >= 1
           favs = FavoritePlayer.where(player: player[:id])
           favs.each do |fav|
-            fav.player_points = player[:player_points]
-            fav.save
+            if fav.player_points < player[:player_points]
+              fav.player_points = player[:player_points]
+              fav.save
+              p "***********"
+              p fav.user_id
+              p "***********"
           end
-          p "***********"
         end
       end
+    end
     
         
        # First, check against favorite_player table
