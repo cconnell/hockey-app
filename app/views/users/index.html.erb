@@ -51,6 +51,7 @@
   <%= submit_tag "Add to favorite searches" %>
 <% end %>
 
+<%= @testplayer %>
 <h4><a href="/?goal_leaders=goal_leaders">Goal Leaders</a>  <a href="/?assist_leaders=assist_leaders">Assist Leaders</a>  <a href="/?point_leaders=point_leaders">Points Leaders</a></h4>
 <h1><%= @requested_stats_table_title %> Leaders</h1>
 <h5>Current as of: <%= @requested_stats_updated %></h5>
@@ -73,16 +74,23 @@
     <% @players_array.each do |player| %>
     <tr>
 
-
-      <td><%= form_tag "/favorite_player/#{player[:id]}", method: :post do %><%= submit_tag "Follow"%><% end %></td>
+<!-- #{player[:player_points]}
+ -->
+      <td>
+        <%= form_tag "/favorite_player/#{player[:id]}", method: :post do %>
+          <%= hidden_field_tag :player_points, player[:player_points] %>
+          <%= submit_tag "Follow"%>
+        <% end %> 
+      </td>
       <td><a href=<%= "/player/#{player[:id]}" %>><%= player[:player_name] %></a></td>
       <td><a href=<%= "/#{player[:player_team]}" %>><%= player[:player_team] %></a></td>
-      <td> <%= player[:player_position] %></td>
+      <td name='player_pos' value='self'> <%= player[:player_position] %></td>
       <td> <%= player[:player_games] %></td>
       <td> <%= player[:player_goals] %></td>
       <td> <%= player[:player_assists] %></td>
       <td> <%= player[:player_points] %></td>
       <td> <%= (player[:player_points].to_f / player[:player_games].to_f).round(3) %></td>
+
     <% end %>
     </tr>
 </tr>

@@ -1,6 +1,6 @@
 class FavoriteTeamsController < ApplicationController
 
-def new
+  def new
     @favteam = FavoriteTeam.new
   end
 

@@ -44,6 +44,34 @@ class UsersController < ApplicationController
         @players_array << temp_hash
       end
   
+    @players_array.each do |player|
+      if FavoritePlayer.where(player: player[:id]).length > 0
+        # if player[:player_points] > FavoritePlayer.where(player: player[:id])
+          p FavoritePlayer.where(player: player[:id])
+          p "***********"
+        end
+      end
+    
+        
+       First, check against favorite_player table
+          if in table
+            get number for all instances in table
+              if number has changed
+                update number
+                create alert
+              end
+          end
+        end
+
+
+  #   @players_array
+  #    saved_stat = FavoritePlayer.where(player: player[:id])
+
+  # if saved_stat.player_points < new points
+  #   saved_stat.player_points == new points
+  #   saved_stat.player_points.save
+  
+
 
   # Must pass in leaders parameter with sort so there is something to sort!
 

@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216165701) do
+ActiveRecord::Schema.define(version: 20160310004102) do
 
   create_table "favorite_players", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
+    t.integer  "user_id",       limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "player",     limit: 4
+    t.integer  "player",        limit: 4
+    t.integer  "player_points", limit: 4
   end
 
   create_table "favorite_searches", force: :cascade do |t|
