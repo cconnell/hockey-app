@@ -45,23 +45,26 @@ class UsersController < ApplicationController
       end
   
     @players_array.each do |player|
-      if FavoritePlayer.where(player: player[:id]).length > 0
-        # if player[:player_points] > FavoritePlayer.where(player: player[:id])
-          p FavoritePlayer.where(player: player[:id])
+      if FavoritePlayer.where(player: player[:id]).length >= 1
+          favs = FavoritePlayer.where(player: player[:id])
+          favs.each do |fav|
+            fav.player_points = player[:player_points]
+            fav.save
+          end
           p "***********"
         end
       end
     
         
-       First, check against favorite_player table
-          if in table
-            get number for all instances in table
-              if number has changed
-                update number
-                create alert
-              end
-          end
-        end
+       # First, check against favorite_player table
+       #    if in table
+       #      get number for all instances in table
+       #        if number has changed
+       #          update number
+       #          create alert
+       #        end
+       #    end
+       #  end
 
 
   #   @players_array
