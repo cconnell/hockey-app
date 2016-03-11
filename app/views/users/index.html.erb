@@ -9,7 +9,8 @@
 <p><%= link_to "Sign Out", "/users/sign_out", method: :delete if user_signed_in? %></p>
 
 <% @score_alerts.each do |alert| %>
-  <%= alert %>
+  <%= alert[:alert] %> " " <%= alert[:player] %>
+
 <% end %>
 
 
