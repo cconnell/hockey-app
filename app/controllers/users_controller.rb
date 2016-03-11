@@ -44,35 +44,28 @@ class UsersController < ApplicationController
         @players_array << temp_hash
       end
          
+    @score_alerts = []
+
     @players_array.each do |player|
       if FavoritePlayer.where(player: player[:id]).length >= 1
           favs = FavoritePlayer.where(player: player[:id])
           favs.each do |fav|
-            @scorealert = []
-            temp_alert_hash = {}
+            # @scorealert = []
+            
             if fav.player_points < player[:player_points]
               fav.player_points = player[:player_points]
               fav.save
+              temp_alert_hash = {}
               temp_alert_hash[:alert] = fav.user_id
               temp_alert_hash[:player] = fav.player
-              @scorealert << temp_alert_hash 
+              @score_alerts << temp_alert_hash 
+              # p temp_alert_hash
+              # p "*******************"
+            end
           end
-        end
       end
     end
     
-        
-       # First, check against favorite_player table
-       #    if in table
-       #      get number for all instances in table
-       #        if number has changed
-       #          update number
-       #          create alert
-       #        end
-       #    end
-       #  end
-
-
   #   @players_array
   #    saved_stat = FavoritePlayer.where(player: player[:id])
 
