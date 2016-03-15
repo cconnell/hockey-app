@@ -1,6 +1,15 @@
 
 <div ng-app="app">
   {{ 1 + 1 }}
+
+  <div ng-controller="statsCtrl">
+    {{ message }}
+    <div id="stats_table">
+      <p ng-repeat="stat in stats_json"> {{ stats_json[0] }}</p>
+{{ stats_json }}
+      <input ng-model="newFavoritePlayer">
+      <button ng-click="addFavoritePlayer(newFavoritePlayer)">Add Review</button>
+  </div>
 </div>
 <p><%= link_to "Home", "/" %></p>
 
