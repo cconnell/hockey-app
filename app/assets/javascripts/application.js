@@ -50,4 +50,6 @@
 //= require theme/respond.min
 //= require theme/support-filter
 //= require theme/waypoints.min
+//= require angular
+//= require app
 //= require_tree .
