@@ -2,10 +2,33 @@
 <div ng-app="app">
  1+1 = {{ 1 + 1 }}
 
-  <div ng-controller="statsCtrl">
+  <div ng-controller="statsCtrl" ng-init="setup()">
     {{ message }}
     <br>
-      <p ng-repeat="player in players_array"> ID {{player.id}} PLAYER {{ player.data }}</p>
+      <table border="1" style="width:70%">
+        <tr ng-repeat="player in players_api_array">
+          <td>{{player.id}}</td>
+          <br>
+          <td>{{player.player_team}}</td>
+          <br>
+          <td>{{player.player_position}}</td>
+          <br>
+          <td>{{player.player_name}}</td>
+          <br>
+          <td>{{player.player_games}}</td>
+          <br>
+          <td>{{player.player_goals}}</td>
+          <br>
+          <td>{{player.player_assists}}</td>
+          <br>
+          <td>{{player.player_points}}</td>
+
+
+
+
+
+        </tr>
+</table>
       <input ng-model="newFavoritePlayer">
       <button ng-click="addFavoritePlayer(newFavoritePlayer)">Add Favorite Player</button>
       <!-- have to add parameters to send via js

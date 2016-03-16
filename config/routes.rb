@@ -5,6 +5,12 @@ Rails.application.routes.draw do
 devise_for :users
 root 'users#index'
 
+ namespace :api do
+  namespace :v1 do
+      get '/stats' => 'stats#index'
+    end
+  end
+
 get '/users' => 'users#index'
 
 post '/users/' => 'users#create'
