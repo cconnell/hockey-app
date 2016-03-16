@@ -1,11 +1,18 @@
-class Stat < ActiveRecord::Base
+class Stat
 
-   @requested_stats_players = @requested_stats["skaterData"]
-   @requested_stats_updated = @requested_stats["timestamp"]
-   @requested_stats_table_title = @requested_stats["title"].titleize
+  def time_stamp
+    @requested_stats_updated = @requested_stats["timestamp"]
+  end
 
-   @players_array = []
-    
+  def table_title
+    @requested_stats_table_title = @requested_stats["title"].titleize
+  end
+
+
+  def processed_hash
+    @requested_stats_players = @requested_stats["skaterData"]
+    @players_array_hash = []
+      
       @requested_stats_players.each do |info|
         temp_hash = {}
         temp_hash[:id] = info['id']
@@ -17,6 +24,9 @@ class Stat < ActiveRecord::Base
         temp_hash[:player_assists] = info['data'].split(', ')[6].to_i
         temp_hash[:player_points] = info['data'].split(', ')[7].to_i
 
-        @players_array << temp_hash
+        @players_array_hash << temp_hash
       end
+
+    return @players_array_hash
+  end
 end

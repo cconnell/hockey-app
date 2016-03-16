@@ -23,6 +23,8 @@ class UsersController < ApplicationController
       @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/points/leagueleaders.json").body 
     end
 
+  # @players_array = Stats.processed_hash(@requested_stats)
+
     # Unirest.get 
     # @players_array = Model.parse_stats(@requested_stats)
     # render json: @players_array
@@ -31,21 +33,21 @@ class UsersController < ApplicationController
     @requested_stats_updated = @requested_stats["timestamp"]
     @requested_stats_table_title = @requested_stats["title"].titleize
 
-    # @players_array = []
+    @players_array = []
     
-    #   @requested_stats_players.each do |info|
-    #     temp_hash = {}
-    #     temp_hash[:id] = info['id']
-    #     temp_hash[:player_team] = info['data'].split(', ')[1]
-    #     temp_hash[:player_position] = info['data'].split(', ')[2]
-    #     temp_hash[:player_name] = info['data'].split(', ')[3]
-    #     temp_hash[:player_games] = info['data'].split(', ')[4].to_i
-    #     temp_hash[:player_goals] = info['data'].split(', ')[5].to_i
-    #     temp_hash[:player_assists] = info['data'].split(', ')[6].to_i
-    #     temp_hash[:player_points] = info['data'].split(', ')[7].to_i
+      @requested_stats_players.each do |info|
+        temp_hash = {}
+        temp_hash[:id] = info['id']
+        temp_hash[:player_team] = info['data'].split(', ')[1]
+        temp_hash[:player_position] = info['data'].split(', ')[2]
+        temp_hash[:player_name] = info['data'].split(', ')[3]
+        temp_hash[:player_games] = info['data'].split(', ')[4].to_i
+        temp_hash[:player_goals] = info['data'].split(', ')[5].to_i
+        temp_hash[:player_assists] = info['data'].split(', ')[6].to_i
+        temp_hash[:player_points] = info['data'].split(', ')[7].to_i
 
-    #     @players_array << temp_hash
-    #   end
+        @players_array << temp_hash
+      end
          
     @score_alerts = []
 
@@ -62,15 +64,13 @@ class UsersController < ApplicationController
               temp_alert_hash[:alert] = fav.user_id
               temp_alert_hash[:player] = fav.player
               @score_alerts << temp_alert_hash 
-              # p temp_alert_hash
-              # p "*******************"
             end
           end
       end
     end
     
-  #   @players_array
-  #    saved_stat = FavoritePlayer.where(player: player[:id])
+    # @players_array
+    #  saved_stat = FavoritePlayer.where(player: player[:id])
 
   # if saved_stat.player_points < new points
   #   saved_stat.player_points == new points
@@ -87,40 +87,40 @@ class UsersController < ApplicationController
    #    render :index
    #  end
 
-    if params[:sort_by_team]
-      @players_array = @players_array.sort! { |x,y| x[:player_team] <=> y[:player_team] } 
-      render :index
-    end
+    # if params[:sort_by_team]
+    #   @players_array = @players_array.sort! { |x,y| x[:player_team] <=> y[:player_team] } 
+    #   render :index
+    # end
 
-    if params[:sort_by_position]
-      @players_array = @players_array.sort! { |x,y| x[:player_position] <=> y[:player_position] } 
-      render :index
-    end
+    # if params[:sort_by_position]
+    #   @players_array = @players_array.sort! { |x,y| x[:player_position] <=> y[:player_position] } 
+    #   render :index
+    # end
   
-    if params[:sort_by_name]
-      @players_array = @players_array.sort! { |x,y| x[:player_name] <=> y[:player_name] } 
-      render :index
-    end
+    # if params[:sort_by_name]
+    #   @players_array = @players_array.sort! { |x,y| x[:player_name] <=> y[:player_name] } 
+    #   render :index
+    # end
 
-    if params[:sort_by_gamesplayed]
-      @players_array = @players_array.sort! { |x,y| y[:player_games] <=> x[:player_games] } 
-      render :index
-    end
+    # if params[:sort_by_gamesplayed]
+    #   @players_array = @players_array.sort! { |x,y| y[:player_games] <=> x[:player_games] } 
+    #   render :index
+    # end
 
-    if params[:sort_by_goals]
-      @players_array = @players_array.sort! { |x,y| y[:player_goals] <=> x[:player_goals] } 
-      render :index
-    end
+    # if params[:sort_by_goals]
+    #   @players_array = @players_array.sort! { |x,y| y[:player_goals] <=> x[:player_goals] } 
+    #   render :index
+    # end
 
-    if params[:sort_by_assists]
-      @players_array = @players_array.sort! { |x,y| y[:player_assists] <=> x[:player_assists] } 
-      render :index
-    end
+    # if params[:sort_by_assists]
+    #   @players_array = @players_array.sort! { |x,y| y[:player_assists] <=> x[:player_assists] } 
+    #   render :index
+    # end
 
-    if params[:sort_by_points]
-      @players_array = @players_array.sort! { |x,y| y[:player_points] <=> x[:player_points] } 
-      render :index
-    end
+    # if params[:sort_by_points]
+    #   @players_array = @players_array.sort! { |x,y| y[:player_points] <=> x[:player_points] } 
+    #   render :index
+    # end
 
   end
 

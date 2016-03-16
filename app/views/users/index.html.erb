@@ -1,14 +1,15 @@
 
 <div ng-app="app">
-  {{ 1 + 1 }}
+ 1+1 = {{ 1 + 1 }}
 
   <div ng-controller="statsCtrl">
     {{ message }}
-    <div id="stats_table">
-      <p ng-repeat="stat in stats_json"> {{ stats_json[0] }}</p>
-{{ stats_json }}
+    <br>
+      <p ng-repeat="player in players_array"> ID {{player.id}} PLAYER {{ player.data }}</p>
       <input ng-model="newFavoritePlayer">
-      <button ng-click="addFavoritePlayer(newFavoritePlayer)">Add Review</button>
+      <button ng-click="addFavoritePlayer(newFavoritePlayer)">Add Favorite Player</button>
+      <!-- have to add parameters to send via js
+      delete in current array syntax at 38 min in intro to angular2 -->
   </div>
 </div>
 <p><%= link_to "Home", "/" %></p>
@@ -22,7 +23,7 @@
 <p><%= link_to "Sign Out", "/users/sign_out", method: :delete if user_signed_in? %></p>
 
 <% @score_alerts.each do |alert| %>
-  <%= alert[:alert] %>  <%= alert[:player] %>
+  <%= alert[:alert] %> <%= alert[:player] %>
 
 <% end %>
 
@@ -51,11 +52,11 @@
   <% end %>
 <% end %>
 
-<!-- %= form_tag "/favorite_players", method: :post do %
-  %= label_tag :player %
-  %= text_field_tag :player %
-  %= submit_tag "Add to favorite players" %
-% end % -->
+<%= form_tag "/favorite_players", method: :post do %>
+  <%= label_tag :player %>
+  <%= text_field_tag :player %>
+  <%= submit_tag "Add to favorite players" %>
+<% end %>
 
 <%= form_tag "/favorite_teams", method: :post do %>
   <%= label_tag :team %>
@@ -70,7 +71,6 @@
   <%= submit_tag "Add to favorite searches" %>
 <% end %>
 
-<%= @testplayer %>
 <h4><a href="/?goal_leaders=goal_leaders">Goal Leaders</a>  <a href="/?assist_leaders=assist_leaders">Assist Leaders</a>  <a href="/?point_leaders=point_leaders">Points Leaders</a></h4>
 <h1><%= @requested_stats_table_title %> Leaders</h1>
 <h5>Current as of: <%= @requested_stats_updated %></h5>
@@ -90,6 +90,7 @@
  -->
   </tr>
   <tr>
+
     <% @players_array.each do |player| %>
     <tr>
 
