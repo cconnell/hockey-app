@@ -14,6 +14,16 @@
       $scope.players_array.push(player);
     };
     
+    $scope.sortBy = function(sortAttribute){
+      if (sortAttribute != $scope.sortByAttribute){
+
+      } else {
+        $scope.descending = !$scope.descending;
+      }
+
+      $scope.sortByAttribute = sortAttribute; 
+    };
+    
     window.scope = $scope;
   });
 
