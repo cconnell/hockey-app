@@ -23,3 +23,7 @@ class Api::V1::StatsController < ApplicationController
       end
   end
 end
+
+
+# <h1><%= @requested_stats_table_title %> Leaders</h1>
+# <h5>Current as of: <%= @requested_stats_updated %></h5>

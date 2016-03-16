@@ -4,22 +4,25 @@
  <div id="stats_table">
   <div ng-controller="statsCtrl" ng-init="setup()">
     {{ message }}
+    <h1><%= @requested_stats_table_title %> Leaders</h1>
+    <h5>Current as of: <%= @requested_stats_updated %></h5>
+    ****These are not from the JS, they are from ruby ****
     <br>
       <table border="1" style="width:45%">
-        <th>ID</th>
+        <!-- <th>ID</th> -->
+        <th ng-click="sortBy('player_name')">Name</th>
         <th ng-click="sortBy('player_team')">Team</th>
         <th ng-click="sortBy('player_position')">Position</th>
-        <th ng-click="sortBy('player_name')">Name</th>
         <th ng-click="sortBy('player_games')">Games</th>
         <th ng-click="sortBy('player_goals')">Goals</th>
         <th ng-click="sortBy('player_assists')">Assists</th>
         <th ng-click="sortBy('player_points')">Points</th>
 
         <tr ng-repeat="player in players_api_array | orderBy: sortByAttribute:descending ">
-          <td ng-click="addFavoritePlayer">{{player.id}}</td>
+          <!-- <td ng-click="addFavoritePlayer">{{player.id}}</td> -->
+          <td>{{player.player_name}}</td>
           <td>{{player.player_team}}</td>
           <td>{{player.player_position}}</td>
-          <td>{{player.player_name}}</td>
           <td>{{player.player_games}}</td>
           <td>{{player.player_goals}}</td>
           <td>{{player.player_assists}}</td>
@@ -28,7 +31,6 @@
 
 **** NEED TO AUTOMATICALLY POPULATE refresh time, table title, table headers **** <br>
 **** HOW TO DO FAVORITE PLAYER display, deleting how to go back to database **** <br>
-**** HOW TO SORT TABLES **** <br>
 **** HOW TO NOTIFIY CHANGES? **** <br>
 
         </tr>
