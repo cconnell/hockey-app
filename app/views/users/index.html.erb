@@ -1,15 +1,15 @@
 
 <div ng-app="app">
- 1+1 = {{ 1 + 1 }}
  <div id="stats_table">
   <div ng-controller="statsCtrl" ng-init="setup()">
-    {{ message }}
+    
     <h1><%= @requested_stats_table_title %> Leaders</h1>
     <h5>Current as of: <%= @requested_stats_updated %></h5>
     ****These are not from the JS, they are from ruby ****
     <br>
       <table border="1" style="width:45%">
-        <!-- <th>ID</th> -->
+        <th></th>
+        <th>ID</th>
         <th ng-click="sortBy('player_name')">Name</th>
         <th ng-click="sortBy('player_team')">Team</th>
         <th ng-click="sortBy('player_position')">Position</th>
@@ -20,13 +20,17 @@
 
         <tr ng-repeat="player in players_api_array | orderBy: sortByAttribute:descending ">
           <!-- <td ng-click="addFavoritePlayer">{{player.id}}</td> -->
-          <td>{{player.player_name}}</td>
-          <td>{{player.player_team}}</td>
-          <td>{{player.player_position}}</td>
-          <td>{{player.player_games}}</td>
-          <td>{{player.player_goals}}</td>
-          <td>{{player.player_assists}}</td>
-          <td>{{player.player_points}}</td>
+
+<!--           href='/favorite_players/{{player.id}}'
+ -->          <td><button ng-click="addFavoritePlayer">Follow!</button></td>
+          <td>{{player.id}}</td>
+          <td name="player_name">{{player.player_name}}</td>
+          <td name="player_team">{{player.player_team}}</td>
+          <td name="player_position">{{player.player_position}}</td>
+          <td name="player_games">{{player.player_games}}</td>
+          <td name="player_goals">{{player.player_goals}}</td>
+          <td name="player_assists">{{player.player_assists}}</td>
+          <td name="player_points">{{player.player_points}}</td>
 
 
 **** NEED TO AUTOMATICALLY POPULATE refresh time, table title, table headers **** <br>
@@ -127,8 +131,9 @@
 <!-- #{player[:player_points]}
  -->
       <td>
-        <%= form_tag "/favorite_player/#{player[:id]}", method: :post do %>
+        <%= form_tag "/favorite_players/#{player[:id]}", method: :post do %>
           <%= hidden_field_tag :player_points, player[:player_points] %>
+          <%= hidden_field_tag :player_name, player[:player_name] %>
           <%= submit_tag "Follow"%>
         <% end %> 
       </td>

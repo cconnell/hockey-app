@@ -6,7 +6,7 @@ class FavoritePlayersController < ApplicationController
 
   def create
     
-    @favorite_player = FavoritePlayer.new(user_id: current_user.id, player: params[:id], player_points: params[:player_points])
+    @favorite_player = FavoritePlayer.new(user_id: current_user.id, player: params[:id], player_points: params[:player_points], player_name: params[:player_name] )
     verify_favorite = FavoritePlayer.where(user_id: current_user.id).where(player: params[:id])
     
     if verify_favorite.empty?

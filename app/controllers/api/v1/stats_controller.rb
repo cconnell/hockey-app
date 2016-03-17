@@ -22,6 +22,8 @@ class Api::V1::StatsController < ApplicationController
         @players_array_ajax << temp_hash
       end
   end
+
+  
 end
 
 

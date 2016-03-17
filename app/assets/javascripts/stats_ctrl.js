@@ -2,7 +2,7 @@
   "use strict";
 
   angular.module("app").controller("statsCtrl", function($scope,$http){
-    $scope.message = "Test Message Working!!!"
+    // $scope.message = "Test Message Working!!!"
 
     $scope.setup = function(){
       $http.get('/api/v1/stats.json').then(function(response){
@@ -10,8 +10,17 @@
       });
     };
 
-    $scope.addFavoritePlayer = function(player){
-      $scope.players_array.push(player);
+    $scope.addFavoritePlayer = function(playerId, playerName, playerPoints, userId){
+      var newFavoritePlayer = {
+        id: playerId,
+        player_name: playerName,
+        player_points: player_points,
+        user_id: userId
+      };
+
+      $http.post('/favorite_players/{{player.id}}', newFavoritePlayer).then(function(response){
+        console.log(response);
+      });
     };
     
     $scope.sortBy = function(sortAttribute){
@@ -23,7 +32,7 @@
 
       $scope.sortByAttribute = sortAttribute; 
     };
-    
+
     window.scope = $scope;
   });
 
