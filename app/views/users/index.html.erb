@@ -6,6 +6,7 @@
     <h1><%= @requested_stats_table_title %> Leaders</h1>
     <h5>Current as of: <%= @requested_stats_updated %></h5>
     ****These are not from the JS, they are from ruby ****
+
     <br>
       <table border="1" style="width:50%">
         <th></th>
@@ -23,7 +24,7 @@
 
 <!--           href='/favorite_players/{{player.id}}'
  -->          <td><button ng-click="addFavoritePlayer(player.id, player.player_name, player.player_points)">Follow!</button></td>
-          <td id="playerId">{{player.id}}</td>
+          <td name="playerId">{{player.id}}</td>
           <td name="player_name">{{player.player_name}}</td>
           <td name="player_team">{{player.player_team}}</td>
           <td name="player_position">{{player.player_position}}</td>
@@ -134,7 +135,7 @@
         <%= form_tag "/favorite_players/", method: :post do %>
           <%= hidden_field_tag :player_points, player[:player_points] %>
           <%= hidden_field_tag :player_name, player[:player_name] %>
-          <%= hidden_field_tag :id, player[:id] %>
+          <%= hidden_field_tag :player, player[:id] %>
           <%= submit_tag "Follow"%>
         <% end %> 
       </td>

@@ -8,12 +8,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-def stats_updated
-  requested_stats["timestamp"]
-end
-
-  
+  def stats_updated
+    requested_stats["timestamp"]
+  end
 
 end
-
-
