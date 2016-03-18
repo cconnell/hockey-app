@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
     requested_stats["timestamp"]
   end
 
+  def current_logged_user
+    user.id
+  end
+
 end
