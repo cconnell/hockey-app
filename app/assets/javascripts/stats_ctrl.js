@@ -10,15 +10,17 @@
       });
     };
 
-    $scope.addFavoritePlayer = function(playerId, playerName, playerPoints, userId){
+    $scope.addFavoritePlayer = function(playerId, playerName, playerPoints){
+      // $scope.playerId = document.getElementById('playerId').innerHtml;
+      console.log(playerId);
       var newFavoritePlayer = {
-        id: playerId,
+        player: playerId,
         player_name: playerName,
-        player_points: player_points,
-        user_id: userId
+        player_points: playerPoints
       };
-
-      $http.post('/favorite_players/{{player.id}}', newFavoritePlayer).then(function(response){
+      console.log(newFavoritePlayer);
+      // favorite_players/{{player.id}}
+      $http.post('/favorite_players/', newFavoritePlayer).then(function(response){
         console.log(response);
       });
     };

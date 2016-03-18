@@ -7,14 +7,14 @@ class FavoritePlayersController < ApplicationController
   def create
     
     @favorite_player = FavoritePlayer.new(user_id: current_user.id, player: params[:id], player_points: params[:player_points], player_name: params[:player_name] )
-    verify_favorite = FavoritePlayer.where(user_id: current_user.id).where(player: params[:id])
+    # verify_favorite = FavoritePlayer.where(user_id: current_user.id).where(player: params[:id])
     
-    if verify_favorite.empty?
+    # if verify_favorite.empty?
       @favorite_player.save
-      flash[:alert] = "Player saved to your favorites."
-    else
-      flash[:alert] = "Player already saved to your favorites."
-    end
+    #   flash[:alert] = "Player saved to your favorites."
+    # else
+    #   flash[:alert] = "Player already saved to your favorites."
+    # end
     redirect_to "/"
     
   end

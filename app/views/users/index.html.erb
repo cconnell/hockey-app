@@ -7,7 +7,7 @@
     <h5>Current as of: <%= @requested_stats_updated %></h5>
     ****These are not from the JS, they are from ruby ****
     <br>
-      <table border="1" style="width:45%">
+      <table border="1" style="width:50%">
         <th></th>
         <th>ID</th>
         <th ng-click="sortBy('player_name')">Name</th>
@@ -22,8 +22,8 @@
           <!-- <td ng-click="addFavoritePlayer">{{player.id}}</td> -->
 
 <!--           href='/favorite_players/{{player.id}}'
- -->          <td><button ng-click="addFavoritePlayer">Follow!</button></td>
-          <td>{{player.id}}</td>
+ -->          <td><button ng-click="addFavoritePlayer(player.id, player.player_name, player.player_points)">Follow!</button></td>
+          <td id="playerId">{{player.id}}</td>
           <td name="player_name">{{player.player_name}}</td>
           <td name="player_team">{{player.player_team}}</td>
           <td name="player_position">{{player.player_position}}</td>
@@ -57,7 +57,7 @@
 <p><%= link_to "Sign Out", "/users/sign_out", method: :delete if user_signed_in? %></p>
 
 <% @score_alerts.each do |alert| %>
-  <%= alert[:alert] %> <%= alert[:player] %>
+  Hey user #<%= alert[:alert] %> your player <%= alert[:player] %> scored!
 
 <% end %>
 
@@ -131,9 +131,10 @@
 <!-- #{player[:player_points]}
  -->
       <td>
-        <%= form_tag "/favorite_players/#{player[:id]}", method: :post do %>
+        <%= form_tag "/favorite_players/", method: :post do %>
           <%= hidden_field_tag :player_points, player[:player_points] %>
           <%= hidden_field_tag :player_name, player[:player_name] %>
+          <%= hidden_field_tag :id, player[:id] %>
           <%= submit_tag "Follow"%>
         <% end %> 
       </td>
