@@ -13,6 +13,7 @@
     $scope.addFavoritePlayer = function(playerId, playerName, playerPoints){
       // $scope.playerId = document.getElementById('playerId').innerHtml;
       console.log(playerId);
+      // console.log(current_user)
       var newFavoritePlayer = {
         player: playerId,
         player_name: playerName,
