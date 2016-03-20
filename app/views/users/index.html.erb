@@ -47,6 +47,7 @@
   </div>
  </div>
 </div>
+
 <p><%= link_to "Home", "/" %></p>
 
 <% if current_user %>
@@ -62,7 +63,8 @@
 
 <% end %>
 
-
+<!-- ruby on rails
+ -->
 <% if current_user %>
 <h5>Favorite Players: </h5>
   <% @user.favorite_players.each do |user_player| %>

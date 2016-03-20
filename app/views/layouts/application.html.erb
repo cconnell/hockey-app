@@ -409,9 +409,8 @@
 						<p><%= yield %> </p>
 
 						
-<ul>
-  <li onclick="showDetails(this)" id="user" data-user-id="<%= current_user.id %>">User-ID</li> 
-</ul>
+  <ul hidden id="user" data-user-id="<%= current_user.id %>"></ul> 
+
 					</div>
 					
 <!-- 					<div class="divider-1"></div>
@@ -555,12 +554,12 @@
 			// });		
 		</script>
 
- 		<script>
+<!--  		<script>
 function showDetails(user) {
     var userNumber = user.getAttribute("data-user-id");
     alert(user.innerHTML + " is " + userNumber);
 }
-</script>
+</script> -->
 		
 		<script type="text/javascript">
 			// jQuery(document).ready(function() {

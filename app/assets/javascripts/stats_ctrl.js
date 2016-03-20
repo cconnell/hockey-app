@@ -11,7 +11,6 @@
     };
 
     $scope.addFavoritePlayer = function(playerId, playerName, playerPoints, userId){
-      // var userId = document.getElementById('id').innerHtml;
       var userId = user.getAttribute("data-user-id");
       console.log(playerId);
       
