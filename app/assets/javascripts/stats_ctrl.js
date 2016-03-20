@@ -10,14 +10,16 @@
       });
     };
 
-    $scope.addFavoritePlayer = function(playerId, playerName, playerPoints){
-      // $scope.playerId = document.getElementById('playerId').innerHtml;
+    $scope.addFavoritePlayer = function(playerId, playerName, playerPoints, userId){
+      // var userId = document.getElementById('id').innerHtml;
+      var userId = user.getAttribute("data-user-id");
       console.log(playerId);
-      // console.log(current_user)
+      
       var newFavoritePlayer = {
         player: playerId,
         player_name: playerName,
-        player_points: playerPoints
+        player_points: playerPoints,
+        user_id: userId
       };
       console.log(newFavoritePlayer);
       // favorite_players/{{player.id}}

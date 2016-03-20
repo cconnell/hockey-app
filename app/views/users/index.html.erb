@@ -1,4 +1,5 @@
 
+
 <div ng-app="app">
  <div id="stats_table">
   <div ng-controller="statsCtrl" ng-init="setup()">
@@ -20,10 +21,8 @@
         <th ng-click="sortBy('player_points')">Points</th>
 
         <tr ng-repeat="player in players_api_array | orderBy: sortByAttribute:descending ">
-          <!-- <td ng-click="addFavoritePlayer">{{player.id}}</td> -->
 
-<!--           href='/favorite_players/{{player.id}}'
- -->          <td><button ng-click="addFavoritePlayer(player.id, player.player_name, player.player_points)">Follow!</button></td>
+        <td><button ng-click="addFavoritePlayer(player.id, player.player_name, player.player_points)">Follow!</button></td>
           <td id="playerId">{{player.id}}</td>
           <td name="player_name">{{player.player_name}}</td>
           <td name="player_team">{{player.player_team}}</td>
@@ -40,6 +39,7 @@
 
         </tr>
       </table>
+
       <input ng-model="newFavoritePlayer">
       <button ng-click="addFavoritePlayer(newFavoritePlayer)">Add Favorite Player</button>
       <!-- have to add parameters to send via js
