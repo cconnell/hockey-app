@@ -1,15 +1,23 @@
 Rails.application.routes.draw do
  
+  
+
 # get 'stats/index'
 
 devise_for :users
 root 'users#index'
 
- namespace :api do
+namespace :api do
   namespace :v1 do
-      get '/stats' => 'stats#index'
-    end
+    get '/stats' => 'stats#index'
   end
+end
+
+namespace :api do
+  namespace :v2 do
+    get '/favorites' => 'favorites#index'
+  end
+end
 
 get '/users' => 'users#index'
 
