@@ -3,6 +3,7 @@
 <div ng-app="app">
  <div id="stats_table">
   <div ng-controller="statsCtrl" ng-init="setup()">
+  <div ng-controller="favoritesCtrl" ng-init="setup()">
     
     <h1><%= @requested_stats_table_title %> Leaders</h1>
     <h5>Current as of: <%= @requested_stats_updated %></h5>
