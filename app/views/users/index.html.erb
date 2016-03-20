@@ -4,7 +4,11 @@
  <div id="stats_table">
   <div ng-controller="statsCtrl" ng-init="setup()">
   <div ng-controller="favoritesCtrl" ng-init="setup()">
-    
+    <div>
+      <h3> Favs </h3>
+      <ul ng-repeat="favorite in favorites">
+    {{favorite.player_name}}</ul>
+    </div>
     <h1><%= @requested_stats_table_title %> Leaders</h1>
     <h5>Current as of: <%= @requested_stats_updated %></h5>
     ****These are not from the JS, they are from ruby ****
@@ -12,7 +16,6 @@
     <br>
       <table border="1" style="width:50%">
         <th></th>
-        <th>ID</th>
         <th ng-click="sortBy('player_name')">Name</th>
         <th ng-click="sortBy('player_team')">Team</th>
         <th ng-click="sortBy('player_position')">Position</th>
@@ -24,7 +27,6 @@
         <tr ng-repeat="player in players_api_array | orderBy: sortByAttribute:descending ">
 
         <td><button ng-click="addFavoritePlayer(player.id, player.player_name, player.player_points)">Follow!</button></td>
-          <td id="playerId">{{player.id}}</td>
           <td name="player_name">{{player.player_name}}</td>
           <td name="player_team">{{player.player_team}}</td>
           <td name="player_position">{{player.player_position}}</td>
@@ -41,8 +43,8 @@
         </tr>
       </table>
 
-      <input ng-model="newFavoritePlayer">
-      <button ng-click="addFavoritePlayer(newFavoritePlayer)">Add Favorite Player</button>
+<!--       <input ng-model="newFavoritePlayer">
+      <button ng-click="addFavoritePlayer(newFavoritePlayer)">Add Favorite Player</button> -->
       <!-- have to add parameters to send via js
       delete in current array syntax at 38 min in intro to angular2 -->
   </div>

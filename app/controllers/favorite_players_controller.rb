@@ -10,9 +10,12 @@ class FavoritePlayersController < ApplicationController
 
     # add to make rails work user_id: current_user.id,
     @favorite_player = FavoritePlayer.new(player: params[:player], player_points: params[:player_points], player_name: params[:player_name], user_id: params[:user_id])
-    # verify_favorite = FavoritePlayer.where(user_id: current_user.id).where(player: params[:id])
-    # @favorite_player[:user_id] = @user
+    # verify_favorite = FavoritePlayer.where(user_id: params[:user_id).where(player: params[:player])
     # if verify_favorite.empty?
+
+    
+
+
       @favorite_player.save
     #   flash[:alert] = "Player saved to your favorites."
     # else
