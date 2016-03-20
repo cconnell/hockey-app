@@ -1,4 +1,4 @@
 class FavoritePlayer < ActiveRecord::Base
   belongs_to :user
-  # validates :uniqueness => true
+  validates :user_id, uniqueness: { scope: :player}
 end

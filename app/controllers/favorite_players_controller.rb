@@ -5,18 +5,22 @@ class FavoritePlayersController < ApplicationController
   end
 
   def create
-    
+    passed = 0
     # @user = current_user.id
-
+    # p "****************"
+    # p passed
+    # p "****************"
+    passed = FavoritePlayer.where(user_id: params[:user_id], player: params[:player]).length
+    
     # add to make rails work user_id: current_user.id,
     @favorite_player = FavoritePlayer.new(player: params[:player], player_points: params[:player_points], player_name: params[:player_name], user_id: params[:user_id])
-    # verify_favorite = FavoritePlayer.where(user_id: params[:user_id).where(player: params[:player])
-    # if verify_favorite.empty?
-
     
-
-
+    # @favorite_player[:user_id] = @user
+    # if verify_favorite.empty?
       @favorite_player.save
+    # p "****************"
+    # p passed
+    # p "****************"
     #   flash[:alert] = "Player saved to your favorites."
     # else
     #   flash[:alert] = "Player already saved to your favorites."
