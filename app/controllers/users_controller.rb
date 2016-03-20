@@ -5,23 +5,23 @@ class UsersController < ApplicationController
  
     # @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body
 
-    if params[:goal_leaders] || params[:stat_type] == 'goals'
-      @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/goals/leagueleaders.json").body
-      @stat_type = 'goals'
+    # if params[:goal_leaders] || params[:stat_type] == 'goals'
+    #   @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/goals/leagueleaders.json").body
+    #   @stat_type = 'goals'
       
-    elsif params[:point_leaders] || params[:stat_type] == 'points'
-      @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/points/leagueleaders.json").body
-      @stat_type = 'points'
+    # elsif params[:point_leaders] || params[:stat_type] == 'points'
+    #   @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/points/leagueleaders.json").body
+    #   @stat_type = 'points'
       
-    elsif params[:assist_leaders] || params[:stat_type] == 'assits'
-      @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body
-      @stat_type = 'assists'
+    # elsif params[:assist_leaders] || params[:stat_type] == 'assits'
+    #   @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body
+    #   @stat_type = 'assists'
       
-    elsif params[:team]
+    # elsif params[:team]
 
-    else 
+    # else 
       @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/points/leagueleaders.json").body 
-    end
+    # end
 
   # @players_array = Stats.processed_hash(@requested_stats)
 
@@ -61,6 +61,8 @@ class UsersController < ApplicationController
               fav.player_points = player[:player_points]
               fav.save
               temp_alert_hash = {}
+              temp_alert_hash[:id] = fav.id
+              temp_alert_hash[:player_name] = fav.player_name
               temp_alert_hash[:alert] = fav.user_id
               temp_alert_hash[:player] = fav.player
               @score_alerts << temp_alert_hash 
@@ -122,7 +124,8 @@ class UsersController < ApplicationController
     #   render :index
     # end
 
-  end
+end
+  
 
   def show
 

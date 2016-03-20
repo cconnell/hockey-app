@@ -27,6 +27,15 @@
       });
     };
     
+    $scope.dropFavoritePlayer = function(){
+      $http.post('/favorite_players/', deleteFavoritePlayer).then(function(id){
+
+        var deleteFavoritePlayer = {
+          favorite_id: id
+        }
+
+      });
+    };
     $scope.sortBy = function(sortAttribute){
       if (sortAttribute != $scope.sortByAttribute){
 
