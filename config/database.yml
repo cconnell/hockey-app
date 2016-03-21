@@ -48,7 +48,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: hockey-app_production
-  username: hockey-app
-  password: <%= ENV['HOCKEY-APP_DATABASE_PASSWORD'] %>
+  database: hockey-app-production
+  adapter: postgresql
+    encoding: unicode
+    pool: 5
