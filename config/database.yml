@@ -48,7 +48,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  database: hockey-app-production
-  adapter: postgresql
-    encoding: unicode
-    pool: 5
+    database: hockey-app-production
+    adapter: postgresql
+        encoding: unicode
+        pool: 5
