@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+
   def index
     @user = current_user
  
@@ -65,11 +66,19 @@ class UsersController < ApplicationController
               temp_alert_hash[:player_name] = fav.player_name
               temp_alert_hash[:alert] = fav.user_id
               temp_alert_hash[:player] = fav.player
-              @score_alerts << temp_alert_hash 
+              @score_alerts << temp_alert_hash
+
+              
+              client = Hue::Client.new
+              light = client.lights[1]
+              light.off!
+              light.set_state({:alert => 'lselect'}) 
             end
           end
       end
     end
+
+
     
     # @players_array
     #  saved_stat = FavoritePlayer.where(player: player[:id])
