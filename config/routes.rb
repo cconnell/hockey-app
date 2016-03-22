@@ -22,7 +22,7 @@ namespace :api do
 end
 
 get '/users' => 'users#index'
-
+get '/users/table' => 'users#table'
 post '/users/' => 'users#create'
 get '/users/:id' => 'users#show'
 get '/users/:id/edit' => 'users#edit'

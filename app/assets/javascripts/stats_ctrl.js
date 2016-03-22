@@ -24,6 +24,7 @@
       // favorite_players/{{player.id}}
       $http.post('/favorite_players/', newFavoritePlayer).then(function(response){
         console.log(response);
+        alert(playerName + ' saved to your favorites!');
         
       });
     };

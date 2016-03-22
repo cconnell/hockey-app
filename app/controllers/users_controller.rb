@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
-  def landing
+  def table
+  end
+  def index
     @user = current_user
  
     # @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body
