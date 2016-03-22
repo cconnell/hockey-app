@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  
+  before_action :authenticate_user!
 
-  def index
+  def landing
     @user = current_user
  
     # @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/assists/leagueleaders.json").body
@@ -69,10 +69,10 @@ class UsersController < ApplicationController
               @score_alerts << temp_alert_hash
 
               
-              client = Hue::Client.new
-              light = client.lights[1]
-              light.off!
-              light.set_state({:alert => 'lselect'}) 
+              # client = Hue::Client.new
+              # light = client.lights[1]
+              # light.off!
+              # light.set_state({:alert => 'lselect'}) 
             end
           end
       end

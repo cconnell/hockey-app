@@ -24,15 +24,18 @@
       // favorite_players/{{player.id}}
       $http.post('/favorite_players/', newFavoritePlayer).then(function(response){
         console.log(response);
+        
       });
     };
     
-    $scope.dropFavoritePlayer = function(){
-      $http.post('/favorite_players/', deleteFavoritePlayer).then(function(id){
-
-        var deleteFavoritePlayer = {
-          favorite_id: id
-        }
+    $scope.dropFavoritePlayer = function(favoriteId){
+      var deleteFavoritePlayer = {
+          favorite_id: favoriteId
+        };
+        
+      $http.delete('/favorite_players/', deleteFavoritePlayer).then(function(response){
+        console.log(response);
+        
 
       });
     };

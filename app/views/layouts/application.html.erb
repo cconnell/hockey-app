@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hockey-app</title>
+  <title>Light the Lamp</title>
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
@@ -26,13 +26,8 @@
 					
 					<!-- Langauge starts -->
 					<div class="tb-language dropdown pull-right">
-						<a href="#" data-target="#" data-toggle="dropdown"><i class="fa fa-globe"></i> Sign IN/OUT Here <i class="fa fa-angle-down color"></i></a>
-						<!-- Dropdown menu with languages -->
-						<ul class="dropdown-menu dropdown-mini" role="menu">
-							<li><a href="#">Hindi</a></li>
-							<li><a href="#">Tamil</a></li>
-							<li><a href="#">Kanada</a></li>
-						</ul>
+					Hi, <%= current_user.email if user_signed_in? %>!
+					<%= link_to "Sign Out", "/users/sign_out", method: :delete if user_signed_in? %>
 					</div>
 					<!-- Language ends -->
 					
@@ -201,8 +196,8 @@
 						<p><%= yield %> </p>
 
 						
-  <ul hidden id="user" data-user-id="<%= current_user.id %>"></ul> 
 
+ 
 					</div>
 					
 <!-- 					<div class="divider-1"></div>

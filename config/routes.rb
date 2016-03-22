@@ -2,6 +2,8 @@ Rails.application.routes.draw do
  
   
 
+  get 'checker/index'
+
 # get 'stats/index'
 
 devise_for :users
@@ -27,13 +29,14 @@ get '/users/:id/edit' => 'users#edit'
 patch '/users/:id/' => 'users#update'
 delete '/users/:id' => 'users#destroy'
 
+get '/checker' =>'checker#index'
 
 get '/favorite_players' => 'favorite_players#index'
 
 
 post '/favorite_players/' => 'favorite_players#create'
 # get '/favorite_players/:id' => 'favorite_players#show'
-delete '/favorite_players/:id' => 'favorite_players#destroy'
+delete '/favorite_players/' => 'favorite_players#destroy'
 
 
 get '/favorite_teams' => 'favorite_teams#index'

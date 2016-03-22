@@ -3,17 +3,19 @@
   <div ng-controller="statsCtrl" ng-init="setup()">
   <div ng-controller="favoritesCtrl" ng-init="setup()">
     <div>
-  
+      <ul hidden id="user" data-user-id="<%= current_user.id %>"></ul> 
+      <% if @score_alerts %>
       <% @score_alerts.each do |alert| %>
   Hey user #<%= alert[:alert] %> your player <%= alert[:id] %> scored!
 
+<% end %>
 <% end %>
       
     </div>
     <h1><%= @requested_stats_table_title %> Leaders</h1>
     <h5>Current as of: <%= @requested_stats_updated %></h5>
     <ul ng-repeat="favorite in favorites">
-    {{favorite.player_name}}</ul>
+    {{favorite.player_name}} {{favorite.id}} <button ng-click="dropFavoritePlayer(favorite.id)">Drop</ul>
 
     <br>
       <table border="1" style="width:50%">
@@ -49,12 +51,3 @@
  </div>
 </div>
 
-<p><%= link_to "Home", "/" %></p>
-
-<% if current_user %>
-    <p>signed in: <%= current_user.email %></p>
-          <% else %>
-              <p><a href="/users/sign_up">Sign Up/In</a></p>
-          <% end %>
-
-<p><%= link_to "Sign Out", "/users/sign_out", method: :delete if user_signed_in? %></p>  
