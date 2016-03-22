@@ -1,8 +1,7 @@
 task :default => :update_stats
-  desc "Testing!"
+  desc "refreshing_db"
   task :call_nhl do
-    stats =  Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/goals/leagueleaders.json").body
-    p stats["timestamp"]
+    Unirest.get("http://localhost:3000/users")
   end
 
 

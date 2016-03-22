@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  
 
   def index
     @user = current_user
@@ -69,10 +69,10 @@ class UsersController < ApplicationController
               @score_alerts << temp_alert_hash
 
               
-              client = Hue::Client.new
-              light = client.lights[1]
-              light.off!
-              light.set_state({:alert => 'lselect'}) 
+              # client = Hue::Client.new
+              # light = client.lights[1]
+              # light.off!
+              # light.set_state({:alert => 'lselect'}) 
             end
           end
       end
