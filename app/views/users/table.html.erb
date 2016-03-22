@@ -1,0 +1,28 @@
+<div class="favorites" >
+    <div ng-app="app">
+     <div id="stats_table">
+      <div ng-controller="statsCtrl" ng-init="setup()">
+      <div ng-controller="favoritesCtrl" ng-init="setup()">
+        <div>
+                <table >
+                    <tr>
+                        <td ng-click="sortBy('player_name')">Name</td>
+                        <td ng-click="sortBy('player_team')">Team</td>
+                        <td ng-click="sortBy('player_position')">Position</td>
+                        <td ng-click="sortBy('player_games')">Games</td>
+                        <td ng-click="sortBy('player_goals')">Goals</td>
+                        <td ng-click="sortBy('player_assists')">Assists</td>
+                        <td ng-click="sortBy('player_points')">Points</td>
+                    </tr>
+                    <tr ng-repeat="player in players_api_array | orderBy: sortByAttribute:descending ">
+                        <td><button ng-click="addFavoritePlayer(player.id, player.player_name, player.player_points)">Follow!</button></td>
+                        <td name="player_name">{{player.player_name}}</td>
+                          <td name="player_team">{{player.player_team}}</td>
+                          <td name="player_position">{{player.player_position}}</td>
+                          <td name="player_games">{{player.player_games}}</td>
+                          <td name="player_goals">{{player.player_goals}}</td>
+                          <td name="player_assists">{{player.player_assists}}</td>
+                          <td name="player_points">{{player.player_points}}</td>
+                    </tr>
+                </table>
+            </div>

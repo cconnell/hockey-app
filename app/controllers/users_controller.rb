@@ -59,8 +59,8 @@ class UsersController < ApplicationController
             # @scorealert = []
             
             if fav.player_points < player[:player_points]
-              fav.player_points = player[:player_points]
-              fav.save
+              # fav.player_points = player[:player_points]
+              # fav.save
               temp_alert_hash = {}
               temp_alert_hash[:id] = fav.id
               temp_alert_hash[:player_name] = fav.player_name
@@ -69,10 +69,10 @@ class UsersController < ApplicationController
               @score_alerts << temp_alert_hash
 
               
-              # client = Hue::Client.new
-              # light = client.lights[1]
-              # light.off!
-              # light.set_state({:alert => 'lselect'}) 
+              client = Hue::Client.new
+              light = client.lights[1]
+              light.off!
+              light.set_state({:alert => 'lselect'}) 
             end
           end
       end
