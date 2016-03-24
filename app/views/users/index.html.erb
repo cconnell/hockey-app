@@ -4,24 +4,59 @@
   <div ng-controller="favoritesCtrl" ng-init="setup()">
     <div>
       <ul hidden id="user" data-user-id="<%= current_user.id %>"></ul> 
-      <% if @score_alerts %>
-      <% @score_alerts.each do |alert| %>
-  Hey user #<%= alert[:alert] %> your player <%= alert[:id] %> scored!
-
-<% end %>
-<% end %>
+      <!-- % if @score_alerts %>
+      % @score_alerts.each do |alert| %>
+  Hey user #%= alert[:alert] %> your player %= alert[:id] %> scored!
+ -->
+<!-- % end %> -->
+<!-- % end %> -->
       
     </div>
-    <h1><%= @requested_stats_table_title %> Leaders</h1>
-    <h5>Current as of: <%= @requested_stats_updated %></h5>
-    <ul ng-repeat="favorite in favorites">
-    {{favorite.player_name}} {{favorite.id}} <button ng-click="dropFavoritePlayer(favorite.id)">Drop</ul>
+
+<!-- <div class="row">
+  <div class="span4">...</div>
+  <div class="span8">...</div>
+</div> -->
+<div class="row">
+<div class="pull-left">
+
+    <!-- <h1>My Favorites</h1> -->
+  </div>
+</div>
+  
+<!--     <div class="favs-table" >
+ -->  
+     
+      <div ng-controller="statsCtrl" ng-init="setup()">
+      <div ng-controller="favoritesCtrl" ng-init="setup()">
+
+        <!-- <div>
+                <table >
+                    <tr>
+                        
+                        <td ng-click="sortBy('favorite.player_name')">Name</td>
+                        <td ng-click="sortBy('favorite.player_points')">Points</td>
+                    </tr>
+                    <tr ng-repeat="favorite in favorites | orderBy: sortByAttribute:descending ">
+                        <td name="player_name">{{favorite.player_name}}</td>          
+                        <td name="player_points">{{favorite.player_points}}</td>
+                    </tr>
+                </table>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+    <h1>League <%= @requested_stats_table_title %> Leaders</h1>
+    <h5>Last Updated <%= @requested_stats_updated %></h5>
+    <!-- <ul ng-repeat="favorite in favorites">
+    {{favorite.player_name}} {{favorite.id}} <button ng-click="dropFavoritePlayer(favorite.id)">Drop</ul> -->
 
     <br>
   
 
 <div class="table" >
-    <div ng-app="app">
+    
      
       <div ng-controller="statsCtrl" ng-init="setup()">
       <div ng-controller="favoritesCtrl" ng-init="setup()">
@@ -31,11 +66,11 @@
                         <td></td>
                         <td ng-click="sortBy('player_name')">Name</td>
                         <td ng-click="sortBy('player_team')">Team</td>
-                        <td ng-click="sortBy('player_position')">Position</td>
-                        <td ng-click="sortBy('player_games')">Games</td>
-                        <td ng-click="sortBy('player_goals')">Goals</td>
-                        <td ng-click="sortBy('player_assists')">Assists</td>
-                        <td ng-click="sortBy('player_points')">Points</td>
+                        <td ng-click="sortBy('player_position')">POS</td>
+                        <td ng-click="sortBy('player_games')">GP</td>
+                        <td ng-click="sortBy('player_goals')">G</td>
+                        <td ng-click="sortBy('player_assists')">A</td>
+                        <td ng-click="sortBy('player_points')">PTS</td>
                     </tr>
                     <tr ng-repeat="player in players_api_array | orderBy: sortByAttribute:descending ">
                         <td><button ng-click="addFavoritePlayer(player.id, player.player_name, player.player_points)">Follow!</button></td>

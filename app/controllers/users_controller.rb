@@ -23,7 +23,9 @@ class UsersController < ApplicationController
     # elsif params[:team]
 
     # else 
-      @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/points/leagueleaders.json").body 
+      @requested_stats = Unirest.get("http://nhlwc.cdnak.neulion.com/fs1/nhl/league/leagueleaders/iphone/points/leagueleaders.json").body
+
+      # @requested_stats = File.get("app/assets/leagueleaders.json").body 
     # end
 
   # @players_array = Stats.processed_hash(@requested_stats)

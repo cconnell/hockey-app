@@ -15,7 +15,9 @@
 			<!-- Top bar starts -->
 			<div class="top-bar">
 				<div class="container">
-				
+					<div class="tb-language dropdown pull-left">
+					Hi, <%= current_user.email if user_signed_in? %> !
+					</div>
 					<!-- Contact starts -->
 					
 					<!-- Contact ends -->
@@ -26,8 +28,7 @@
 					
 					<!-- Langauge starts -->
 					<div class="tb-language dropdown pull-right">
-					Hi, <%= current_user.email if user_signed_in? %>!
-					<%= link_to "Sign Out", "/users/sign_out", method: :delete if user_signed_in? %>
+					<button> <%= link_to "Sign Out", "/users/sign_out", method: :delete if user_signed_in? %> </button>
 					</div>
 					<!-- Language ends -->
 					
@@ -68,14 +69,12 @@
 			
 				<!-- Container -->
 				<div class="container">
-					<div class="row">
-						<div class="col-md-2">
-							<!-- Logo section -->
-							<div class="logo">
-								<h1><a href="#"><i class="fa fa-laptop"></i></a></h1>
-							</div>
-						</div>
-						<div class="col-md-9">
+					<div class="text-center">
+						<h1>Light the Lamp</h1>
+						<p></p>
+					</div>
+						
+							<!-- Navigation starts.  -->
 						
 							<!-- Navigation starts.  -->
 							<div class="navy">			
@@ -111,44 +110,44 @@
 								<!-- Image Box #3 Item -->
 								<div class="img-box-3-item">
 									<div class="img-box-3-icon bg-red">
-										<a href="#"><img src="assets/theme/flat-icons/10.png" alt="" class="img-responsive" /></a>
+										<a href="#"><img src="assets/theme/flat-icons/skates2.png" alt="" class="img-responsive" /></a>
 									</div>
-									<h4><a href="#">Sign Up!</a></h4>
+									<h4><a href="#">Sign Up</a></h4>
 									<div class="bor bg-red"></div>
-									<p>register</p>
+									<p>Create an account with your email address</p>
 								</div>
 							</div>
 							<div class="col-md-3 col-sm-6">
 								<!-- Image Box #3 Item -->
 								<div class="img-box-3-item">
 									<div class="img-box-3-icon bg-lblue">
-										<a href="#"><img src="assets/theme/flat-icons/3.png" alt="" class="img-responsive" /></a>
+										<a href="#"><img src="assets/theme/flat-icons/jersey2.png" alt="" class="img-responsive" /></a>
 									</div>
-									<h4><a href="#">Pick Your Players!</a></h4>
+									<h4><a href="#">Pick Your Players</a></h4>
 									<div class="bor bg-lblue"></div>
-									<p>save your favorites to your account</p>
+									<p>Save your favorite league leaders to your account</p>
 								</div>
 							</div>
 							<div class="col-md-3 col-sm-6">
 								<!-- Image Box #3 Item -->
 								<div class="img-box-3-item">
 									<div class="img-box-3-icon bg-green">
-										<a href="#"><img src="assets/theme/flat-icons/17.png" alt="" class="img-responsive" /></a>
+										<a href="#"><img src="assets/theme/flat-icons/rink2.png" alt="" class="img-responsive" /></a>
 									</div>
-									<h4><a href="#">Enter your hue info</a></h4>
+									<h4><a href="#">Configure Your Light</a></h4>
 									<div class="bor bg-green"></div>
-									<p>stuff to send post request</p>
+									<p>Activate your Hue network</p>
 								</div>
 							</div>
 							<div class="col-md-3 col-sm-6">
 								<!-- Image Box #3 Item -->
 								<div class="img-box-3-item">
 									<div class="img-box-3-icon bg-blue">
-										<a href="#"><img src="assets/theme/flat-icons/20.png" alt="" class="img-responsive" /></a>
+										<a href="#"><img src="assets/theme/flat-icons/net2.png" alt="" class="img-responsive" /></a>
 									</div>
-									<h4><a href="#">Light the Lamp!</a></h4>
+									<h4><a href="#">Light The Lamp</a></h4>
 									<div class="bor bg-blue"></div>
-									<p>Maiores alias consequatur aut perferendis doloribus asperiores repellat earum dolor.</p>
+									<p>Your favorites Light the Lamp each time they record a point</p>
 								</div>
 							</div>
 						</div>	
@@ -243,32 +242,7 @@
 			
 			<!-- Foot Starts -->
 		
-			<div class="foot">
-				<!-- Container -->
-				<div class="container">
-					<div class="row">
-						<div class="col-md-3 col-sm-6">
-							<!-- Foot Item -->
-							<div class="foot-item">
-								<!-- Heading -->
-								<h5 class="bold"><i class="fa fa-user"></i>&nbsp;&nbsp;About</h5>
-								<p>Itaque earum rerum hic tenetur a atque atatum dele niti atque tenetur a atque atatum tenetur volup tatum.</p>
-								
-								<div class="subscribe-box">
-									<h5 class="bold">Subscribe :</h5>
-									<!-- Form -->
-									<form role="form">
-										<!-- Input Group -->
-										<div class="input-group">
-											<input type="text" class="form-control" placeholder="Enter Email Id">
-											<span class="input-group-btn">
-												<button class="btn btn-color" type="button">Subscribe</button>
-											</span>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>	
+				
 						<div class="col-md-3 col-sm-6">
 							<!-- Foot Item -->
 							
@@ -295,24 +269,7 @@
 			
 			<!-- Footer Starts -->
 			
-			<footer>
-				<!-- Container -->
-				<div class="container">
-					<!-- Footer Content -->
-						<!-- Paragraph -->
-						<p class="pull-left">Copyright &copy; 2014 - <a href="#">Your Site</a></p>
-						<ul class="list-inline pull-right">
-							<!-- List -->
-							<li><a href="index.html">Home</a><li>
-							<li><a href="service.html">Service</a></li>
-							<li><a href="feature.html">Features</a></li>
-							<li><a href="about-us.html">About</a></li>
-							<li><a href="contact-us.html">Contact</a></li>
-						</ul>
-						<!-- Clearfix -->
-						<div class="clearfix"></div>
-				</div>
-			</footer>
+			
 			
 			<!-- Footer Ends -->
 		
